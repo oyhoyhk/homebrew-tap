@@ -1,0 +1,36 @@
+class Suhyeok < Formula
+  desc "Command local Claude Code and Codex sessions from a pixel RPG guild hall"
+  homepage "https://github.com/oyhoyhk/suhyeok"
+  url "https://github.com/oyhoyhk/suhyeok/releases/download/v0.1.0/suhyeok-0.1.0-arm64.zip"
+  sha256 "74257d2c5d9937e842d4544b039293ff9a2ddb38aa6d3c6f5b73777ec1d5184d"
+  version "0.1.0"
+
+  depends_on arch: :arm64
+  depends_on macos: :sonoma
+  depends_on "tmux"
+
+  def install
+    # Homebrew enters a lone top-level directory when unpacking, so the bundle may arrive already opened.
+    if File.directory?("Contents")
+      (prefix/"수혁.app").install "Contents"
+    else
+      prefix.install "수혁.app"
+    end
+    (bin/"suhyeok").write <<~SH
+      #!/bin/bash
+      exec open "#{opt_prefix}/수혁.app" "$@"
+    SH
+  end
+
+  def caveats
+    <<~EOS
+      Launch with:  suhyeok
+      To show 수혁 in Launchpad and Spotlight:
+        ln -sf "#{opt_prefix}/수혁.app" ~/Applications/수혁.app
+    EOS
+  end
+
+  test do
+    assert_predicate prefix/"수혁.app/Contents/MacOS/AgentDeck", :executable?
+  end
+end
