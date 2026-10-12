@@ -6,6 +6,7 @@ class Suhyeok < Formula
   version "0.2.0"
 
   depends_on arch: :arm64
+  depends_on "cloudflared"
   depends_on macos: :sonoma
   depends_on "tmux"
 
