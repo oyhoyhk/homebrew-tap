@@ -1,9 +1,9 @@
 class Suhyeok < Formula
   desc "Command local Claude Code and Codex sessions from a pixel RPG guild hall"
   homepage "https://github.com/oyhoyhk/suhyeok"
-  url "https://github.com/oyhoyhk/suhyeok/releases/download/v0.2.2/suhyeok-0.2.2-arm64.zip"
-  sha256 "3f839311148c767e8328dda2dd53988b28fa99776a2c4ee139094aa3b2ec5302"
-  version "0.2.2"
+  url "https://github.com/oyhoyhk/suhyeok/releases/download/v0.2.3/suhyeok-0.2.3-arm64.zip"
+  sha256 "1c4d9af945057d7f902ce65a553b3e953c100fba04b625197566a96da8877db3"
+  version "0.2.3"
 
   depends_on arch: :arm64
   depends_on "cloudflared"
